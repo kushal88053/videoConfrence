@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                      // Update to a more recent version of ES
+    "module": "commonjs",                     // Use CommonJS modules (still widely used for Node.js projects)
+    "lib": ["ES2020", "ESNext.AsyncIterable"], // Use newer ECMAScript features
+    "sourceMap": true,                        // Generate source maps for easier debugging
+    "noEmitOnError": true,                    // Don't emit output if there are errors
+    "outDir": "./dist",                       // Directory where compiled JS will be placed
+    "moduleResolution": "node",               // Use Node.js module resolution strategy
+    "types": ["node", "jest"],                // Specify global types for Node.js and Jest
+    "typeRoots": ["./node_modules/@types", "./src/@types"], // Custom type roots
+    "removeComments": true,                   // Remove comments from the output
+    "noImplicitAny": true,                    // Raise error on expressions with 'any' type
+    "strict": true,                           // Enable all strict type-checking options
+    "noUnusedLocals": false,                  // Keep unused locals for debugging
+    "noImplicitThis": true,                   // Ensure 'this' is always bound
+    "noUnusedParameters": false,              // Keep unused parameters for debugging
+    "noImplicitReturns": true,                // Ensure all functions have a return type
+    "noFallthroughCasesInSwitch": true,       // Ensure no fallthrough in switch cases
+    "allowSyntheticDefaultImports": true,     // Allow default imports from modules without default exports
+    "esModuleInterop": true,                  // Enable compatibility with CommonJS modules
+    "emitDecoratorMetadata": true,            // Emit metadata for decorators (if used)
+    "experimentalDecorators": true,           // Enable experimental decorators
+    "resolveJsonModule": true,                // Allow importing JSON modules
+    "baseUrl": ".",                           // Base directory for relative module resolution
+    "paths": {
+      "src/*": ["./src/*"]                    // Custom path mappings for the 'src' folder
+    },
+    "skipLibCheck": true,                     // Skip type checking of declaration files to speed up compilation
+    "forceConsistentCasingInFileNames": true  // Ensure file names are case-consistent
+  },
+  "exclude": ["node_modules", "./src/**/*test.ts"], // Exclude node_modules and test files
+  "include": ["./src/**/*.ts"]                    // Include all TypeScript files in the 'src' folder
+}
