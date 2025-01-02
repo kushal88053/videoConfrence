@@ -1,40 +1,28 @@
-import { ObjectId } from 'mongodb';
-
-export class Identifier<T = ObjectId> {
-    constructor(private readonly value: T) { }
+export class Identifier<T> {
+    constructor(private value: T) {
+        this.value = value;
+    }
 
     equals(id?: Identifier<T>): boolean {
-        if (!id) {
+        if (id === null || id === undefined) {
             return false;
         }
-        if (!(id instanceof Identifier)) {
+        if (!(id instanceof this.constructor)) {
             return false;
         }
-        return this.toString() === id.toString();
+
+        return String(id.toValue()) === String(this.value);
     }
 
-    toString(): string {
-        return this.value instanceof ObjectId ? this.value.toHexString() : String(this.value);
+    toString() {
+        return String(this.value);
     }
 
     /**
-     * Return the raw value of the identifier
+     * Return raw value of identifier
      */
+
     toValue(): T {
         return this.value;
-    }
-
-    /**
-     * Check if the identifier is valid
-     */
-    static isValid(id: string): boolean {
-        return ObjectId.isValid(id);
-    }
-
-    /**
-     * Create a new Identifier with a fresh ObjectId
-     */
-    static createNew(): Identifier<ObjectId> {
-        return new Identifier(new ObjectId());
     }
 }
